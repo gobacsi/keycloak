@@ -1,6 +1,9 @@
 FROM quay.io/keycloak/keycloak:latest as builder
 WORKDIR /opt/keycloak
-COPY . .
+COPY ./providers/. ./providers
+COPY ./themes/gobacsi ./themes
+COPY ./themes/base/. ./themes/base
+
 RUN /opt/keycloak/bin/kc.sh build
 
 FROM quay.io/keycloak/keycloak:latest
